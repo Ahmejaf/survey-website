@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="step" id="step-1">
+            <h2>Select Language</h2>
+            <select id="language" onchange="nextStep(1)">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+            </select>
+            <button onclick="nextStep(1)">Next</button>
+        </div>
+        <div class="step" id="step-2">
+            <h2>Select Country</h2>
+            <select id="country" onchange="nextStep(2)">
+                <option value="IN">India</option>
+                <option value="US">USA</option>
+            </select>
+            <button onclick="nextStep(2)">Next</button>
+        </div>
+        <div class="step" id="step-3">
+            <h2>Select State/Province</h2>
+            <select id="state">
+                <!-- States will be populated based on country selection -->
+            </select>
+            <button onclick="nextStep(3)">Next</button>
+        </div>
+        <div class="step" id="step-4">
+            <h2>Number of Family Members</h2>
+            <select id="family-members">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <button onclick="nextStep(4)">Next</button>
+        </div>
+        <div class="step" id="step-5">
+            <h2>Contact Information</h2>
+            <input type="text" id="contact" placeholder="Contact Number (optional)">
+            <button onclick="submitSurvey()">Submit</button>
+        </div>
+        <div class="step" id="results">
+            <h2>Survey Results</h2>
+            <div id="chart-container"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

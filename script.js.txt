@@ -1,0 +1,49 @@
+let currentStep = 1;
+
+function nextStep(step) {
+    document.getElementById(`step-${step}`).classList.remove('active');
+    currentStep++;
+    document.getElementById(`step-${currentStep}`).classList.add('active');
+
+    if (currentStep === 3) {
+        populateStates();
+    }
+}
+
+function populateStates() {
+    const country = document.getElementById('country').value;
+    const stateSelect = document.getElementById('state');
+    stateSelect.innerHTML = '';
+
+    const states = country === 'IN' ? [
+        'Andhra Pradesh', 'Karnataka', 'Maharashtra', 'Tamil Nadu'
+    ] : [
+        'California', 'Florida', 'New York', 'Texas'
+    ];
+
+    states.forEach(state => {
+        const option = document.createElement('option');
+        option.value = state;
+        option.textContent = state;
+        stateSelect.appendChild(option);
+    });
+}
+
+function submitSurvey() {
+    document.getElementById(`step-${currentStep}`).classList.remove('active');
+    document.getElementById('results').classList.add('active');
+
+    // Logic to display results in charts
+    displayResults();
+}
+
+function displayResults() {
+    const chartContainer = document.getElementById('chart-container');
+    chartContainer.innerHTML = `
+        <h3>Population Distribution</h3>
+        <img src="chart.png" alt="Chart">
+    `;
+}
+
+// Initialize the first step
+document.getElementById(`step-${currentStep}`).classList.add('active');
